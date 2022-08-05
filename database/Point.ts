@@ -8,7 +8,7 @@ export const point_schema = new Schema({
 		unique: true,
 		required: true,
 	},
-	coords: {
+	coordinates: {
 		lat: {
 			type: Number,
 			required: true,

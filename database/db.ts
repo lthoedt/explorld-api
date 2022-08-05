@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 
 const db = mongoose.connection;
 
+// db.explorers.insert({id:"123",name:"leo",journey:[]})
+
 export const createDatabase = async () => {
 	const url: string = String(process.env.DB_URL);
 
