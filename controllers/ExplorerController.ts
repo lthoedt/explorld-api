@@ -1,7 +1,8 @@
 import express from 'express';
 import { sendStatus } from "./functions"
-import { syncJourney as syncJourney } from '../service/journeyService';
+import { getJourney, syncJourney as syncJourney } from '../service/journeyService';
 import { getExplorer } from '../service/explorerService';
+import Point from '../database/Point';
 
 const router = express.Router();
 
@@ -29,8 +30,12 @@ router.post(`${journey_route}/sync`, async (req, res) => {
 })
 
 router.get(`${journey_route}/sync`, async (req, res) => {
-    const explorerId = req.params.explorerId;
-    res.json(res.locals.explorer);
+    const explorer = res.locals.explorer;
+    const journey : [typeof Point] = await getJourney(explorer);
+
+    if (journey == null) return res.status(500).json({success: false, body: "Something went wrong with retrieving your journey."})
+
+    res.json(journey);
 })
 
 module.exports = router
