@@ -2,8 +2,8 @@ import express from 'express';
 
 const router = express.Router();
 
-const route_points = require('./PointsController');
+const route_explorer = require('./ExplorerController');
 
-router.use("/points", route_points);
+router.use("/explorer", route_explorer);
 
 module.exports = router;

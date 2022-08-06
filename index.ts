@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json())
-app.use( "/api/", route_main );
+app.use( "/api", route_main );
 
 app.listen(port, async () => {
 	await createDatabase();
